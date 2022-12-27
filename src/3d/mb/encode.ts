@@ -1,4 +1,4 @@
-import { valuesAreUint10, CoordRangeError } from "../../util";
+import { valuesAreUint10, CoordRange10Error } from "../../util";
 
 const magicBitsMask3DEncode = [
   0x000003ff,
@@ -33,7 +33,7 @@ function morton3DSplitBy3bits(coord: number) {
  */
 export function morton3DEncode(x: number, y: number, z: number): number {
   if (!valuesAreUint10(x, y, z)) {
-    throw CoordRangeError;
+    throw CoordRange10Error;
   }
   return morton3DSplitBy3bits(x) | (morton3DSplitBy3bits(y) << 1) | (morton3DSplitBy3bits(z) << 2);
 }

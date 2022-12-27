@@ -4,7 +4,7 @@
 
 ## About
 
-* Supports 2D coordinates with 16-bit components (0 - 65,535) and 3D coordinates with 10-bit components (0 - 1,023)
+* Supports 2D coordinates with 15-bit components (0 - 32,767) or 3D coordinates with 10-bit components (0 - 1,023)
 
 
 ## Installation

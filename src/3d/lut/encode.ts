@@ -1,4 +1,4 @@
-import { CoordRangeError, valuesAreUint10 } from "../../util";
+import { CoordRange10Error, valuesAreUint10 } from "../../util";
 import { morton3DEncodeX256, morton3DEncodeY256, morton3DEncodeZ256 } from "./luts";
 
 const EIGHTBITMASK = 0x000000FF;
@@ -12,7 +12,7 @@ const EIGHTBITMASK = 0x000000FF;
  */
 export function morton3DEncode(x: number, y: number, z: number): number {
   if (!valuesAreUint10(x, y, z)) {
-    throw CoordRangeError;
+    throw CoordRange10Error;
   }
   let answer = 0;
   for (let i = 10; i > 0; --i) {
