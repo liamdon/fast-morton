@@ -122,4 +122,3 @@ const coords = morton3Decode(mortonCode); // [1, 2, 3]
 # LICENSE
 
 Code is licensed under the [MIT License](./LICENSE).
-
