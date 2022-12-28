@@ -1,19 +1,19 @@
 {
   "name": "fast-morton",
   "description": "Fast morton encoding and decoding for 2D and 3D coordinates",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "source": "src/index.ts",
   "main": "dist/index.umd.js",
   "module": "dist/index.modern.module.js",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
-	"exports": {
-		".": "./dist/index.modern.module.js",
-		"./2d/mb": "./dist/2d-mb.modern.module.js",
+  "exports": {
+    ".": "./dist/index.modern.module.js",
+    "./2d/mb": "./dist/2d-mb.modern.module.js",
     "./2d/lut": "./dist/2d-lut.modern.module.js",
-		"./3d/mb": "./dist/3d-mb.modern.module.js",
+    "./3d/mb": "./dist/3d-mb.modern.module.js",
     "./3d/lut": "./dist/3d-mb.modern.module.js"
-	},
+  },
   "keywords": [
     "microbundle",
     "typescript"
@@ -35,8 +35,7 @@
     "microbundle": "^0.15.0",
     "prettier": "^2.8.1"
   },
-  "prettier": {
-  },
+  "prettier": {},
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
