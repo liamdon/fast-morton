@@ -1,4 +1,1 @@
-export {
-  morton2DEncode,
-  morton2DDecode
-} from "./2d/mb";
+export { morton2DEncode, morton2DDecode } from "./2d/mb";

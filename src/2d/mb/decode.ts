@@ -1,12 +1,7 @@
 import { MortonCodeRangeError } from "../../util";
 
 const magicBitsMask2DDecode = [
-  0xFFFFFFFF,
-  0x0000FFFF,
-  0x00FF00FF,
-  0x0F0F0F0F,
-  0x33333333,
-  0x55555555
+  0xffffffff, 0x0000ffff, 0x00ff00ff, 0x0f0f0f0f, 0x33333333, 0x55555555,
 ];
 
 function morton2DGetSecondBits(coord: number) {
@@ -20,16 +15,19 @@ function morton2DGetSecondBits(coord: number) {
 }
 
 /**
- * 
+ *
  * @param morton a 2D morton code
  * @param out a 2-component output array - provide this to avoid an array allocation
  * @returns a 2D coordinate (as an array)
  */
-export function morton2DDecode(morton: number, out?: [number, number]): [number, number] {
+export function morton2DDecode(
+  morton: number,
+  out?: [number, number]
+): [number, number] {
   if (morton < 0 || morton > 4_294_967_295) {
     throw MortonCodeRangeError;
   }
-  const result = out ?? new Array(2) as [number, number];
+  const result = out ?? (new Array(2) as [number, number]);
   result[0] = morton2DGetSecondBits(morton);
   result[1] = morton2DGetSecondBits(morton >> 1);
   return result;

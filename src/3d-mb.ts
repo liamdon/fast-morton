@@ -1,4 +1,1 @@
-export {
-  morton3DEncode,
-  morton3DDecode
-} from "./3d/mb";
+export { morton3DEncode, morton3DDecode } from "./3d/mb";
