@@ -1,6 +1,9 @@
-![Build](https://github.com/liamdon/fast-morton/workflows/Build%20&%20test/badge.svg)
 
-**fast-morton**: Fast morton encoding/decoding for 2D and 3D coordinates
+# **fast-morton** 
+
+Fast morton encoding/decoding for 2D and 3D coordinates
+
+![Build](https://github.com/liamdon/fast-morton/workflows/Build%20&%20test/badge.svg)
 
 ## About
 
