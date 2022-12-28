@@ -94,7 +94,13 @@ const mortonCode = morton3DEncode(1, 2, 3); // 53
 const coords = morton3Decode(mortonCode); // [1, 2, 3]
 ```
 
-## Development
+## TODO
+
+* Benchmarks comparing Magic Bits, LUT and a naive method
+* Support a broader range of coordinate values with the Morton Code output being either 2<sup>53</sup>-1 or BigInt (currently max output is 2<sup>32</sup>-1)
+
+
+## Development/Contributing
 
 ### Requirements
 
