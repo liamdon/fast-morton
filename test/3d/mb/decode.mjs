@@ -2,6 +2,23 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { morton3DDecodeMB } from "../../../dist/index.js";
 
+test('valid output for morton code 1-8', (_t) => {
+  const valid = [
+    [ 1, 0, 0 ],
+    [ 0, 1, 0 ],
+    [ 1, 1, 0 ],
+    [ 0, 0, 1 ],
+    [ 1, 0, 1 ],
+    [ 0, 1, 1 ],
+    [ 1, 1, 1 ],
+    [ 2, 0, 0 ]
+  ];
+  for (let i = 1; i < 8; i++) {
+    const coords = morton3DDecodeMB(i + 1);
+    assert.deepEqual(coords, valid[i]);
+  }
+});
+
 test('valid output for 53 = (1, 2, 3)', (_t) => {
   const coords = morton3DDecodeMB(53);
   assert.equal(coords[0], 1);

@@ -7,6 +7,13 @@
   "module": "dist/index.modern.module.js",
   "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
+	"exports": {
+		".": "./dist/index.modern.module.js",
+		"./2d/mb": "./dist/2d-mb.modern.module.js",
+    "./2d/lut": "./dist/2d-lut.modern.module.js",
+		"./3d/mb": "./dist/3d-mb.modern.module.js",
+    "./3d/lut": "./dist/3d-mb.modern.module.js"
+	},
   "keywords": [
     "microbundle",
     "typescript"
@@ -16,7 +23,7 @@
     "dist/**/*.ts"
   ],
   "scripts": {
-    "build": "microbundle --define PKG_VERSION=$npm_package_version",
+    "build": "microbundle src/*.ts --define PKG_VERSION=$npm_package_version",
     "watch": "microbundle watch --define PKG_VERSION=$npm_package_version",
     "test": "node --test test",
     "lint": "prettier src test -c",

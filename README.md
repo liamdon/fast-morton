@@ -1,16 +1,94 @@
 ![Build](https://github.com/liamdon/fast-morton/workflows/Build%20&%20test/badge.svg)
 
-**fast-morton**: Fast morton encoding and decoding for 2D and 3D coordinates
+**fast-morton**: Fast morton encoding/decoding for 2D and 3D coordinates
 
 ## About
 
-* Supports 2D coordinates with 15-bit components (0 - 32,767) or 3D coordinates with 10-bit components (0 - 1,023)
+* Port of a subset of [libmorton](https://github.com/Forceflow/libmorton) to Typescript
+* Supports 2D coordinates with 15-bit components (0 - 32,767)
+* Supports 3D coordinates with 10-bit components (0 - 1,023)
+* Two methods are provided:
+  * Magic Bits (additional discussion [here](https://stackoverflow.com/questions/18529057/produce-interleaving-bit-patterns-morton-keys-for-32-bit-64-bit-and-128bit))
+  * LUT (Shifted Lookup Table)
 
+Both are described in [this blog post](https://www.forceflow.be/2013/10/07/morton-encodingdecoding-through-bit-interleaving-implementations/).
+
+The Lookup Table method is [a little faster](https://www.forceflow.be/2013/10/07/morton-encodingdecoding-through-bit-interleaving-implementations/), at the cost of some additional code size and runtime memory (a few KB) for the tables.
+
+These methods are exported separately (see below) so that your bundler can strip out the LUTs if you decide not to use them.
 
 ## Installation
 
 ```sh
 npm install --save fast-morton
+```
+
+## Import
+
+Top-level:
+```typescript
+import {
+  morton2DEncodeMB,
+  morton2DDecodeMB,
+  morton2DEncodeLUT,
+  morton2DDecodeLUT,
+  morton3DEncodeMB,
+  morton3DDecodeMB,
+  morton3DEncodeLUT,
+  morton3DDecodeLUT
+} from "fast-morton";
+```
+
+Deep import:
+```typescript
+
+// 2D using magic bits
+import {
+  morton2DEncode,
+  morton2DDecode
+} from "fast-morton/2d/mb";
+
+// 2D using LUT
+import {
+  morton2DEncode,
+  morton2DDecode
+} from "fast-morton/2d/lut";
+
+// 3D using magic bits
+import {
+  morton2DEncode,
+  morton2DDecode
+} from "fast-morton/3d/mb";
+
+// 3D using LUT
+import {
+  morton2DEncode,
+  morton2DDecode
+} from "fast-morton/3d/lut";
+```
+
+## Usage
+
+2D:
+```typescript
+import {
+  morton2DEncode,
+  morton2DDecode
+} from "fast-morton/2d/lut";
+
+const mortonCode = morton2DEncode(1, 2); // 9
+const coords = morton2Decode(mortonCode); // [1, 2]
+```
+
+3D:
+```typescript
+import {
+  morton3DEncode,
+  morton3DDecode
+} from "fast-morton/3d/lut";
+
+const mortonCode = morton3DEncode(1, 2, 3); // 53
+const coords = morton3Decode(mortonCode); // [1, 2, 3]
 ```
 
 ## Development

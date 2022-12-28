@@ -2,6 +2,21 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { morton3DEncodeLUT } from "../../../dist/index.js";
 
+test('valid output x/y/z 1/2/3', (_t) => {
+  const validX = [1, 8, 9];
+  const validY = [2, 16, 18];
+  const validZ = [4, 32, 36];
+  const valid = [validX, validY, validZ];
+  for (let i = 0; i < valid.length; i++) {
+    for (let j = 0; j < valid[i].length; j++) {
+      const coord = [0, 0, 0];
+      coord[i] = j + 1;
+      const mortonCode = morton3DEncodeLUT(...coord);
+      assert.equal(mortonCode, valid[i][j]);
+    }
+  }
+});
+
 test('valid output for (1, 2, 3) = 53', (_t) => {
   const mortonCode = morton3DEncodeLUT(1, 2, 3);
   assert.equal(mortonCode, 53);
